@@ -1,25 +1,36 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
+import pandas as pd
 from mtab import *
-
-app = FastAPI()
-
-
-@app.get("/api/annotations/remote")
-async def from_url(url: str):
-    print(url)
-    return {"file": url}
+import urllib.request
 
 
-@app.post("/api/annotations/local")
-async def from_upload(file: UploadFile):
+app = FastAPI(
+    title="Sinatra API",
+    description="Mtab annotation from local or remote dataset",
+    version="0.0.1"
+)
+
+mtab_client = MtabClient()
+
+
+@app.get("/api/annotations/remote", tags=["annotations"])
+async def annotate_from_url(url: str):
+    table = []
+    ann_request = AnnotationRequest()
+    for line in urllib.request.urlopen(url): # .read(10); read only 20 000 chars
+        table.append(line.decode('utf-8')[:-1].split(","))
+    annotation = mtab_client.annotate(ann_request)
+    return annotation
+
+
+@app.post("/api/annotations/local", tags=["annotations"])
+async def annotate_from_upload(file: UploadFile):
+    table = []
+    ann_request = AnnotationRequest()
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extention"}
-    mtab_client = MtabClient()
-    ann_request = AnnotationRequest()
-    table = []
     for line in file.file.readlines():
         table.append((str(line))[:-1].split(","))
     ann_request.set_table(table)
-    # print(ann_request.to_dict())
-    ann = mtab_client.annotate(ann_request)
-    return ann
+    annotation = mtab_client.annotate(ann_request)
+    return annotation

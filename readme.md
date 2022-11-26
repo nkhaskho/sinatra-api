@@ -11,7 +11,7 @@ source env/bin/activate
 
 Install FastApi with all it's dependencies (uvicorn,...)
 ``` shell
-pip install "fastapi[all]"
+pip install -r requirements.txt
 ```
 
 Run the API in development mode
