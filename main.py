@@ -16,7 +16,7 @@ mtab_client = MtabClient()
 @app.get("/api/annotations/remote", tags=["annotations"])
 async def annotate_from_url(url: str):
     table = []
-    ann_request = AnnotationRequest()
+    ann_request = AnnotationRequest("table 1")
     for line in urllib.request.urlopen(url): # .read(10); read only 20 000 chars
         table.append(line.decode('utf-8')[:-1].split(","))
     annotation = mtab_client.annotate(ann_request)
@@ -26,7 +26,7 @@ async def annotate_from_url(url: str):
 @app.post("/api/annotations/local", tags=["annotations"])
 async def annotate_from_upload(file: UploadFile):
     table = []
-    ann_request = AnnotationRequest()
+    ann_request = AnnotationRequest("table 2")
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extention"}
     for line in file.file.readlines():

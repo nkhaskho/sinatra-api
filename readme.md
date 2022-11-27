@@ -9,10 +9,12 @@ Open the created virtual environment
 source env/bin/activate
 ```
 
-Install FastApi with all it's dependencies (uvicorn,...)
+Install required modules
 ``` shell
 pip install -r requirements.txt
 ```
+
+## Run the Web API
 
 Run the API in development mode
 ``` shell
@@ -20,5 +22,6 @@ uvicorn main:app --reload
 ```
 
 ## API documentation
-API documentation will be available at http://127.0.0.1:8000/docs
+API documentation will be available at: <br>
+http://127.0.0.1:8000/docs
 
