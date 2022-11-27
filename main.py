@@ -30,7 +30,7 @@ async def annotate_from_upload(file: UploadFile):
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extention"}
     for line in file.file.readlines():
-        table.append((str(line))[:-1].split(","))
+        table.append((str(line))[2:-3].split(","))
     ann_request.set_table(table)
     annotation = mtab_client.annotate(ann_request)
     return annotation
