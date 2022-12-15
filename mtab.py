@@ -1,5 +1,6 @@
 import requests
 
+
 API_URL = "https://dbpedia.mtab.app/api/v1/mtab"
 
 class AnnotationRequest:
@@ -42,6 +43,6 @@ class MtabClient:
     def __init__(self):
         self.api_url = API_URL
 
-    def annotate(self, request: AnnotationRequest):
-        res = requests.post(self.api_url, json=request.to_dict())
+    def annotate(self, a_request: dict):
+        res = requests.post(self.api_url, json=a_request)
         return res.json()

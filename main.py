@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile
 import pandas as pd
+import numpy as np
 from mtab import *
 import urllib.request
 
@@ -24,14 +25,20 @@ async def annotate_from_url(url: str):
 
 
 @app.post("/api/annotations/local", tags=["annotations"])
-async def annotate_from_upload(file: UploadFile):
+def annotate_from_upload(file: UploadFile):
     table = []
     ann_request = AnnotationRequest("table 2")
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extension"}
-    for line in file.file.readlines():
-        table.append((str(line))[2:-3].split(","))
+    # todo: load file with pandas
+    df = pd.read_csv(file.file)
+    rows = df.to_numpy()
+    table.append(list(df.columns.values))
+    for row in rows:
+        table.append(list(row))
+    #print(table)
     ann_request.set_table(table)
-    annotation = mtab_client.annotate(ann_request)
-    semantic = annotation["semantic"]
-    return semantic
+    annotation = mtab_client.annotate(ann_request.to_dict())
+    #print(ann_request.to_dict())
+    #semantic = annotation["semantic"]
+    return {"res": 1} #{"table": table}
