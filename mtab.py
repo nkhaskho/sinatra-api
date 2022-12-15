@@ -13,7 +13,7 @@ class AnnotationRequest:
         self.search_limit = search_limit
         self.search_mode = search_mode
         self.round_id = round_id
-        self.predict_target: True
+        self.predict_target = 1
 
     def set_table(self, data):
         self.table = data
@@ -33,7 +33,7 @@ class AnnotationRequest:
             "search_limit": self.search_limit,
             "search_mode": self.search_mode,
             "round_id": self.round_id,
-            "predict-target": "true"
+            "predict_target": 1
         }
         
 
