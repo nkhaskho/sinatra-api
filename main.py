@@ -32,13 +32,15 @@ def annotate_from_upload(file: UploadFile):
         return {"error": "invalid file extension"}
     # todo: load file with pandas
     df = pd.read_csv(file.file)
+    # dealing with missing data -> drop row
+    df = df.dropna(0)
     rows = df.to_numpy()
     table.append(list(df.columns.values))
     for row in rows:
         table.append(list(row))
-    #print(table)
+    print(table)
     ann_request.set_table(table)
-    annotation = mtab_client.annotate(ann_request.to_dict())
+    ann = mtab_client.annotate(ann_request.to_dict())
     #print(ann_request.to_dict())
     #semantic = annotation["semantic"]
-    return {"res": 1} #{"table": table}
+    return {"res": ann} #{"table": table}
