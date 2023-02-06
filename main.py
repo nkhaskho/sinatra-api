@@ -1,15 +1,15 @@
 from fastapi import FastAPI, UploadFile
 import pandas as pd
-import numpy as np
 from mtab import *
-from SPARQLWrapper import SPARQLWrapper, JSON
+from utils import sparql_query
 import urllib.request
 
 
 app = FastAPI(
     title="Sinatra API",
     description="Mtab annotation from local or remote dataset",
-    version="0.0.1"
+    version="0.0.1",
+    
 )
 
 mtab_client = MtabClient()
@@ -49,18 +49,14 @@ def annotate_from_upload(file: UploadFile):
     if "semantic" in ann.keys():
         return {"res": ann["semantic"]} #{"table": table}
     new_column = "birth"
-    queryString = "PREFIX dbr:  <http://dbpedia.org/resource/> \n SELECT ?predicate \nWHERE {\n?predicate a rdf:Property\nFILTER ( REGEX ( STR (?predicate), \"http://dbpedia.org/ontology/\", \"i\" ) )\nFILTER ( REGEX ( STR (?predicate), \"" + new_column + "\", \"i\" ) )\n}\nORDER BY ?predicate"
-    executeSparqlQuery(queryString)
+    sparql_query(new_column)
     return ann
 
 
-def executeSparqlQuery(query):
-    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-    sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
-    results = sparql.query().convert()
-    print("RESULTS SPARQL QUERY: ", results)
-    return results
+@app.put("/api/augmentations", tags=["augmentations"])
+def augmentate_from_upload(column: str, file: UploadFile):
+    return sparql_query(column)
+
 
 def get_uri(name: str):
     resource_url = "http://dbpedia.org/resource/"
