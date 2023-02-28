@@ -53,6 +53,18 @@ async def get_analytics(file: UploadFile):
     return analytics
 
 
+@app.get("/api/preprocess/remote", tags=["preprocess"])
+async def preprocess(url: str):
+    dataset = []
+    df = pd.read_csv(url, sep=";")
+    df = df.dropna(0)
+    rows = df.to_numpy()
+    dataset.append(list(df.columns.values))
+    for row in rows:
+        dataset.append(list(row))
+    return dataset
+
+
 @app.get("/api/annotations/remote", tags=["annotations"])
 async def annotate_from_url(url: str):
     table = []
