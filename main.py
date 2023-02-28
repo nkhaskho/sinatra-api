@@ -25,7 +25,7 @@ def custom_openapi():
 app.openapi = custom_openapi
 
 
-@app.post("/api/analytics", tags=["analytics"])
+@app.post("/api/analytics/local", tags=["analytics"])
 async def get_analytics(file: UploadFile):
     table = []
     ann_request = AnnotationRequest("table 2")
