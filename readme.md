@@ -1,3 +1,9 @@
+## Get source code
+Clone the source code from remote github repository
+``` shell
+git clone https://github.com/nkhaskho/sinatra-api.git
+```
+
 ## Environment setup
 Create a new virtual environment
 ``` shell

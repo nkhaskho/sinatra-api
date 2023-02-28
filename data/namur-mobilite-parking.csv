@@ -1,0 +1,34 @@
+﻿Description;Nbre de Places;Fonction;Localité;Code postal;Jours et heures d'ouverture;Rue nom;adresse no;Téléphone;IDENTIFIANT;Geo Shape;Geo Point
+Parking Léopold;500;Parking couvert;NAMUR;5000;7j/7 - 24h/24;Square Léopold;20;(+32) 081 22 91 57;4;"{""coordinates"": [4.8670029915, 50.4686871248], ""type"": ""Point""}";50.4686871248, 4.8670029915
+Parking du Beffroi;260;Parking couvert;NAMUR;5000;7j/7 - 24h/24;Place d'Armes;;(+32) 081 25 19 70;7;"{""coordinates"": [4.8678656072, 50.4628869069], ""type"": ""Point""}";50.4628869069, 4.8678656072
+Parking Relais - Namur Expo;475;Parking Relais;NAMUR;5000;7j/7 - 24h/24;Avenue Sergent Vrithoff;11;(+32) 081 24 65 84;8;"{""coordinates"": [4.8479463433, 50.466124096], ""type"": ""Point""}";50.466124096, 4.8479463433
+Parking Droit inférieur;42;Parking couvert;NAMUR;5000;Samedi de 7h à 24h.;Rue Grandgagnage;;(+32) 081 72 40 59;13;"{""coordinates"": [4.8582327969, 50.4661118677], ""type"": ""Point""}";50.4661118677, 4.8582327969
+Parking Malin - Centre sportif de Basse-Enhaive;70;Parking Malin;JAMBES;5100;;Rue Albert Michiels;8;;79;"{""coordinates"": [4.8929378448, 50.4651720896], ""type"": ""Point""}";50.4651720896, 4.8929378448
+Parking Malin - Rue d'Arquet;60;Parking Malin;NAMUR;5000;;Rue d'Arquet;;;73;"{""coordinates"": [4.8665857739, 50.4773131], ""type"": ""Point""}";50.4773131, 4.8665857739
+Parking Malin - Gare de Naninne;175;Parking Malin;NANINNE;5100;;Rue des Bolettes;;;80;"{""coordinates"": [4.9299251018, 50.4198413843], ""type"": ""Point""}";50.4198413843, 4.9299251018
+Parking Malin -  Esplanade de la Citadelle;200;Parking Malin;NAMUR;5000;;Sentier Saint-Simon;;;83;"{""coordinates"": [4.8569695269, 50.4564783236], ""type"": ""Point""}";50.4564783236, 4.8569695269
+Parking Malin - Rue de Bauce;60;Parking Malin;FLAWINNE;5020;;Rue de Bauce;;;84;"{""coordinates"": [4.8064036421, 50.4514769302], ""type"": ""Point""}";50.4514769302, 4.8064036421
+Parking de la Gare P2;480;Parking couvert;NAMUR;5000;7j/7 - 24h/24;Boulevard d'Herbatte;;(+32) 081 25 22 22;34;"{""coordinates"": [4.8670440029, 50.4699867902], ""type"": ""Point""}";50.4699867902, 4.8670440029
+Parking Malin - Rue de l'Industrie;80;Parking Malin;SAINT-SERVAIS;5002;;Rue de l'Industrie;;;74;"{""coordinates"": [4.8502821868, 50.4754992066], ""type"": ""Point""}";50.4754992066, 4.8502821868
+Parking Malin - Décathlon;20;Parking Malin;LIVES-SUR-MEUSE;5101;;Avenue des Dessus de Lives;;;78;"{""coordinates"": [4.92188968, 50.4616406143], ""type"": ""Point""}";50.4616406143, 4.92188968
+Parking Rogier;68;Parking;NAMUR;5000;;Rue Rogier;;;1;"{""coordinates"": [4.8692753106, 50.4669730348], ""type"": ""Point""}";50.4669730348, 4.8692753106
+Parking du Centre;160;Parking couvert;NAMUR;5000;Lundi au jeudi de 8h à 21h. vendredi de 8h à 23h. samedi de 8h à 01h - Fermé le dimanche.;Rue de Fer;105;(+32) 081 22 32 04;3;"{""coordinates"": [4.8650966589, 50.4670464334], ""type"": ""Point""}";50.4670464334, 4.8650966589
+Parking de la Gare P1;471;Parking couvert;NAMUR;5000;7j/7 - 24h/24;Boulevard du Nord;;(+32) 081 25 22 22;5;"{""coordinates"": [4.863666423, 50.4699469244], ""type"": ""Point""}";50.4699469244, 4.863666423
+Parking Relais - P+R Saint-Nicolas;276;Parking Relais;NAMUR;5000;7j/7 - 24h/24;Avenue Albert 1er;;(+32) 081 24 65 84;9;"{""coordinates"": [4.8833231854, 50.4668448661], ""type"": ""Point""}";50.4668448661, 4.8833231854
+Parking Confluence;670;Parking couvert;NAMUR;5000;;rue du Grognon;2;;87;"{""coordinates"": [4.8688044802, 50.461392698], ""type"": ""Point""}";50.461392698, 4.8688044802
+Parking BUMP;181;Parking;NAMUR;5000;Samedi de 7h à 17h. sortie autorisée jusqu'à 22h.;Rue Grandgagnage;;(+32) 081 72 40 59;14;"{""coordinates"": [4.857603362, 50.4662259099], ""type"": ""Point""}";50.4662259099, 4.857603362
+Parking Malin - Avenue du Parc;25;Parking Malin;BOUGE;5004;;Avenue du Parc;;;72;"{""coordinates"": [4.8833962035, 50.4827836556], ""type"": ""Point""}";50.4827836556, 4.8833962035
+Parking Malin - Hall sportif de Beez;150;Parking Malin;BEEZ;5000;;Avenue Reine Astrid;;;76;"{""coordinates"": [4.9187523723, 50.4671793712], ""type"": ""Point""}";50.4671793712, 4.9187523723
+Parking Malin - Centre sportif de la Plante;60;Parking Malin;NAMUR;500;;Chaussée de Dinant;220;;82;"{""coordinates"": [4.855716494, 50.4448331785], ""type"": ""Point""}";50.4448331785, 4.855716494
+Parking Malin - Gare de Flawinne;4;Parking Malin;FLAWINNE;5020;;Rue Fernand Marchand;;;85;"{""coordinates"": [4.8063390006, 50.4563807394], ""type"": ""Point""}";50.4563807394, 4.8063390006
+Parking Malin - Avenue A. Woitrin;40;Parking Malin;NAMUR;5000;;Avenue Antoine Woitrin;;;86;"{""coordinates"": [4.8337149019, 50.4588062558], ""type"": ""Point""}";50.4588062558, 4.8337149019
+Parking des Tanneries SCRL;70;Parking;NAMUR;5000;Uniquement en soirée et le WE;Rue des Tanneries;55;(+32) 081 24 48 54;33;"{""coordinates"": [4.8714394579, 50.4648105628], ""type"": ""Point""}";50.4648105628, 4.8714394579
+Parking Malin - Hall Octave Henry;70;Parking Malin;SAINT-SERVAIS;5002;;Rue de Gembloux;224;;35;"{""coordinates"": [4.8481960219, 50.4753645257], ""type"": ""Point""}";50.4753645257, 4.8481960219
+Parking de l'Hôtel de Ville;350;Parking couvert;NAMUR;5000;Du lundi au samedi de 7h30 à 19h30;Rue des Dames Blanches;;(+32) 081 24 64 79;2;"{""coordinates"": [4.8665443898, 50.4666831379], ""type"": ""Point""}";50.4666831379, 4.8665443898
+Parking Gifar;440;Parking couvert;NAMUR;5000;Lundi au samedi, 8h à 20h - Fermé le dimanche;Rue des Echasseurs;;(+32) 081 22 18 14;6;"{""coordinates"": [4.8661246655, 50.4623568334], ""type"": ""Point""}";50.4623568334, 4.8661246655
+"Parking de l'Arsenal / ""Bon Pasteur""";127;Parking;NAMUR;5000;Samedi de 7h à 24h;Rue de l'Arsenal;;(+32) 081 72 40 59;12;"{""coordinates"": [4.8578590443, 50.4641296064], ""type"": ""Point""}";50.4641296064, 4.8578590443
+Parking Relais - P+R Bouge;716;Parking Relais;BOUGE;5004;;Rue Hébar;;;52;"{""coordinates"": [4.8943396475, 50.4868023276], ""type"": ""Point""}";50.4868023276, 4.8943396475
+Parking Malin - Gare de Marche-les-Dames;15;Parking Malin;MARCHE-LES-DAMES;5024;;Rue Roi Chevalier;;;75;"{""coordinates"": [4.9655427325, 50.4808812153], ""type"": ""Point""}";50.4808812153, 4.9655427325
+Parking Malin - Ancienne gare de Dave;10;Parking Malin;DAVE;5100;;Rue de Jambes;;;81;"{""coordinates"": [4.8849732595, 50.4187418806], ""type"": ""Point""}";50.4187418806, 4.8849732595
+Parking Relais - P+R Saint-Nicolas;276;Parking Relais;NAMUR;5000;7j/7 - 24h/24;Avenue Albert 1er;;(+32) 081 24 65 84;9;"{""coordinates"": [4.8833231854, 50.4668448661], ""type"": ""Point""}";50.4668448661, 4.8833231854
+Parking Malin - Centre sportif de Basse-Enhaive;70;Parking Malin;JAMBES;5100;;Rue Albert Michiels;8;;79;"{""coordinates"": [4.8929378448, 50.4651720896], ""type"": ""Point""}";50.4651720896, 4.8929378448
