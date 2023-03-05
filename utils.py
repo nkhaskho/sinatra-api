@@ -13,3 +13,10 @@ def sparql_query(arg):
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
     return results["results"]["bindings"]
+
+
+
+def get_uri(name: str):
+    resource_url = "http://dbpedia.org/resource/" # column value
+    ontology_url = "http://dbpedia.org/ontology/" # column name
+    return resource_url + name.replace(" ", "_")

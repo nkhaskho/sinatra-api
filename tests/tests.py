@@ -1,4 +1,4 @@
-from utils import sparql_query
+from ..utils import sparql_query
 import unittest
 
 class SparQLQueryTest(unittest.TestCase):
