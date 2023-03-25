@@ -5,7 +5,7 @@ from .models.dataset import Dataset
 router = APIRouter(prefix="/preprocess", tags=["preprocess"])
 
 
-@router.get("/remote", response_model=Dataset) # tags=["preprocess"]
+@router.get("/remote") # tags=["preprocess"]
 async def preprocess(url: str):
     records = []
     df = pd.read_csv(url, sep=";")
@@ -14,5 +14,5 @@ async def preprocess(url: str):
     records.append(list(df.columns.values))
     for row in rows:
         records.append(list(row))
-    dataset = Dataset(headers=records[0], records=records[1:])
-    return dataset
+    #dataset = Dataset(headers=records[0], records=records[1:])
+    return records
