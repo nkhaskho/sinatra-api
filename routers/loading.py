@@ -9,7 +9,9 @@ router = APIRouter(prefix="/loading", tags=["loading"])
 async def preprocess(url: str):
     df = pd.read_csv(url, sep=";")
     rows = df.to_numpy(na_value='')
-    return [list(row) for row in rows]
+    dataset = [list(df.columns.values)]
+    dataset.extend([list(row) for row in rows])
+    return dataset
 
 
 @router.post("/local")
@@ -18,6 +20,8 @@ def load_from_upload(file: UploadFile):
         return {"error": "invalid file extension"}
     df = pd.read_csv(file.file, sep=";")
     rows = df.to_numpy(na_value='')
-    return [list(row) for row in rows]
+    dataset = [list(df.columns.values)]
+    dataset.extend([list(row) for row in rows])
+    return dataset
 
 
