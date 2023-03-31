@@ -5,6 +5,7 @@ import routers.preprocess
 import routers.annotations
 import routers.repair
 import routers.merging
+import routers.loading
 import settings
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -43,6 +44,8 @@ app.openapi = custom_openapi
 
 BASE_URI = f"/api/v{settings.API_VERSION}"
 
+
+app.include_router(routers.loading.router, prefix=BASE_URI)
 app.include_router(routers.analytics.router, prefix=BASE_URI)
 app.include_router(routers.preprocess.router, prefix=BASE_URI)
 app.include_router(routers.annotations.router, prefix=BASE_URI)
