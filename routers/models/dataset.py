@@ -13,4 +13,6 @@ class DatasetAnalytics(BaseModel):
     rows: int
     nacount: int
     duplicates: int
+    spechars: int
+    binaries: int
     headers: List[str] = []
