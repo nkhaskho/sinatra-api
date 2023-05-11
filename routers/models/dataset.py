@@ -12,6 +12,8 @@ class DatasetAnalytics(BaseModel):
     columns: int
     rows: int
     nacount: int
+    specialnas: int
+    numerics: int
     duplicates: int
     spechars: int
     binaries: int
