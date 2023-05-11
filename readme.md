@@ -5,15 +5,6 @@ git clone https://github.com/nkhaskho/sinatra-api.git
 ```
 
 ## Environment setup
-Create a new virtual environment
-``` shell
-python -m venv env
-```
-
-Open the created virtual environment
-``` shell
-source env/bin/activate
-```
 
 Install required modules
 ``` shell
