@@ -1,6 +1,8 @@
-col, col1, col2
-@gmil, *abc, efg
-ef, N., (
-@gmil, *abc, efg
-aaa,,y
+col,col1,col2
+@gmil,*abc,nil
+ef,N.,(
+nan,null,efg
+aaa,?,y
+naim,na,y
 y.,n,n.
+naim,nan,y
