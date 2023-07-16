@@ -40,5 +40,5 @@ def annotate_from_upload(file: UploadFile):
     #semantic = annotation["semantic"]
     if "semantic" in ann.keys():
         return {"res": ann["semantic"]}
-    return ann
+    return {"res": ann}
 
