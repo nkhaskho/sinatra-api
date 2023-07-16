@@ -1,16 +1,22 @@
 import pandas as pd
-from fastapi import APIRouter, UploadFile, Body
+from fastapi import APIRouter, UploadFile, HTTPException
 from .models.dataset import Dataset
 
 router = APIRouter(prefix="/merging", tags=["merging"])
 
 
 @router.put("/local") # response_model=Dataset, 
-def merge_from_local(dataset1: UploadFile, dataset2: UploadFile):
+def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, subject_col: str):
     """
-    TODO: Impl
+    TODO: Adding API endpoint documentation
+    TODO: Refactor endpoint to merge from remote
     """
     df1 = pd.read_csv(dataset1.file, sep=";")
     df2 = pd.read_csv(dataset2.file, sep=";")
-    ds_result = Dataset(headers=[], records=[])
-    return ds_result
+    if subject_col not in df1.columns or subject_col not in df2.columns:
+        raise HTTPException(status_code=404, detail="Subject column missing") 
+    df_result = pd.merge(df1, df2, how="outer", on=subject_col)
+    df_result.fillna("", inplace=True)
+    # TODO: Replace fillna by sparql fill
+    ds_result = df_result.to_dict('index')
+    return list(ds_result.values())
