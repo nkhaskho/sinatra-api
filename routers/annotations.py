@@ -1,5 +1,5 @@
 import pandas as pd
-from fastapi import APIRouter, UploadFile
+from fastapi import APIRouter, HTTPException, UploadFile
 from .mtab import *
 from .models.dataset import *
 
@@ -10,35 +10,28 @@ mtab_client = MtabClient()
 
 
 @router.get("/remote")
-async def annotate_from_url(url: str):
+async def annotate_from_url(url: str, sep:str=","):
     ann_request = AnnotationRequest("From-URL")
-    """
-    for line in urllib.request.urlopen(url): # .read(10); read only 20 000 chars
-        table.append(line.decode('utf-8')[:-1].split(","))
-    """
-    df = pd.read_csv(url, sep=";")
+    df = pd.read_csv(url, sep=sep)
     rows = df.to_numpy(na_value='')
     table = [list(row) for row in rows]
     ann_request.set_table(table)
     ann = mtab_client.annotate(ann_request.to_dict())
-    if "semantic" in ann.keys(): # {"table": table}
-        return {"res": ann["semantic"]} 
-    return ann
+    if "semantic" not in ann.keys():
+        raise HTTPException(status_code=400, detail="Dirty dataset")
+    return ann["semantic"]
 
 
 @router.post("/local")
-def annotate_from_upload(file: UploadFile):
+def annotate_from_upload(file: UploadFile, sep=","):
     ann_request = AnnotationRequest("table 2")
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extension"}
-    df = pd.read_csv(file.file, sep=";")
+    df = pd.read_csv(file.file, sep=sep)
     rows = df.to_numpy(na_value='')
     table = [list(row) for row in rows]
     ann_request.set_table(table)
     ann = mtab_client.annotate(ann_request.to_dict())
-    #print(ann_request.to_dict())
-    #semantic = annotation["semantic"]
-    if "semantic" in ann.keys():
-        return {"res": ann["semantic"]}
-    return {"res": ann}
-
+    if "semantic" not in ann.keys():
+        raise HTTPException(status_code=400, detail="Dirty dataset")
+    return ann["semantic"]

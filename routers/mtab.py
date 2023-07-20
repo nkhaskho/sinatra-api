@@ -8,16 +8,7 @@ class AnnotationRequest:
     def __init__(self, table_name, search_limit=10, search_mode="b", round_id=2):
         self.table_name = table_name
         self.table = []
-        self.tar_cea = [
-            [
-                0,
-                1
-            ],
-            [
-                0,
-                2
-            ]
-        ]
+        self.tar_cea = [[0, 1], [0, 2]]
         self.tar_cta = None
         self.tar_cpa = None
         self.search_limit = search_limit
