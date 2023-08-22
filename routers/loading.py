@@ -1,14 +1,7 @@
 import pandas as pd
 from fastapi import APIRouter, UploadFile
 
-ABBREVS = {
-    "y": 'yes',
-    "n": 'no',
-    "m": 'male',
-    "f": 'femal',
-    "nn": 'naninne',
-    "ch": 'champion',
-}
+from settings import ABBREVS
 
 
 router = APIRouter(prefix="/loading", tags=["loading"])

@@ -1,14 +1,9 @@
 import pandas as pd
 import numpy as np
-from string import punctuation
 from fastapi import APIRouter, UploadFile, Body
 from .models.dataset import *
 
-# define all your specials chars
-SPECIAL_CHARS = ['@', '(', ')', '!']
-BIN_CHARS = ['y', 'n', 't', 'f', 'y', 'y.', 'n.', 't.', 'f.']
-# special null values
-SPECIAL_NULLS = ['null', 'Nan', 'nan', 'nil', '?']
+from settings import BIN_CHARS, SPECIAL_CHARS, SPECIAL_NULLS
 
 spechars = "|".join(SPECIAL_CHARS)
 specialna = "|"

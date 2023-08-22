@@ -1,7 +1,6 @@
 import requests
+from settings import MTAB_API_URL
 
-
-API_URL = "http://mtab4d.kgraph.jp/api/v1/mtab"
 
 class AnnotationRequest:
 
@@ -41,7 +40,7 @@ class AnnotationRequest:
 class MtabClient:
 
     def __init__(self):
-        self.api_url = API_URL
+        self.api_url = MTAB_API_URL
 
     def annotate(self, a_request: dict):
         res = requests.post(self.api_url, json=a_request)
