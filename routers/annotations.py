@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import APIRouter, HTTPException, UploadFile
 from .mtab import *
-from .models.dataset import *
+from models.dataset import *
 
 
 router = APIRouter(prefix="/annotations", tags=["annotations"])

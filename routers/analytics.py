@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from fastapi import APIRouter, UploadFile, Body
-from .models.dataset import *
+from models.dataset import *
 
 from settings import BIN_CHARS, SPECIAL_CHARS, SPECIAL_NULLS
 

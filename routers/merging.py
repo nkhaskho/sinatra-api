@@ -1,6 +1,6 @@
 import pandas as pd
 from fastapi import APIRouter, UploadFile, HTTPException
-from .models.dataset import Dataset
+from models.dataset import Dataset
 
 router = APIRouter(prefix="/merging", tags=["merging"])
 
