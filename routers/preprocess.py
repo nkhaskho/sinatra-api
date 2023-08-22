@@ -1,6 +1,6 @@
 import pandas as pd
 from fastapi import APIRouter, UploadFile
-from settings import ABBREVS
+from settings import ABBREVS, SPEC_CHARS_DICT
 
 
 router = APIRouter(prefix="/preprocess", tags=["preprocess"])
@@ -22,8 +22,10 @@ def preprocess_from_upload(file: UploadFile, separator: str):
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extension"}
     df = pd.read_csv(file.file, sep=separator)
-    # Abbreviations replace (in-place)
-    df.replace(ABBREV.keys(), ABBREV.values(), inplace=True)
+    # Pre-process auto-replace (see settings)
+    df.replace(ABBREVS.keys(), ABBREVS.values(), inplace=True)
+    # add SPEC_CHARS_DICT & fix regex check
+    df.replace({r'.*\?.*': ''}, regex=True, inplace=True)
     rows = df.to_numpy(na_value='')
     dataset = [list(df.columns.values)]
     dataset.extend([list(row) for row in rows])

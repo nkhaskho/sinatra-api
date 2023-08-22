@@ -7,6 +7,12 @@ MTAB_API_URL = "http://mtab4d.kgraph.jp/api/v1/mtab"
 # Specials characters
 SPECIAL_CHARS = ['@', '(', ')', '!']
 
+# Spec chars encoding
+SPEC_CHARS_DICT = {
+    r'.*\?.*': '',
+    r'.*\!.*': ''
+}
+
 # Binaries data
 BIN_CHARS = ['y', 'n', 't', 'f', 'y', 'y.', 'n.', 't.', 'f.']
 
