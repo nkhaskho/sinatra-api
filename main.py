@@ -8,6 +8,10 @@ import routers.merging
 import routers.loading
 import settings
 from fastapi.middleware.cors import CORSMiddleware
+import ssl
+
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 app = FastAPI()
