@@ -10,7 +10,10 @@ import settings
 from fastapi.middleware.cors import CORSMiddleware
 import ssl
 
+import sys
+
 # Server configuration
+sys.path.append("..")
 ssl._create_default_https_context = ssl._create_unverified_context
 
 

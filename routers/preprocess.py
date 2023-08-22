@@ -1,9 +1,6 @@
 import pandas as pd
 from fastapi import APIRouter, UploadFile
-from .loading import ABBREVS
-
-import sys
-sys.path.append("..")
+from settings import ABBREVS
 
 
 router = APIRouter(prefix="/preprocess", tags=["preprocess"])
