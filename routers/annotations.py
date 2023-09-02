@@ -1,7 +1,10 @@
 import pandas as pd
+from fastapi.responses import StreamingResponse
+import io
 from fastapi import APIRouter, HTTPException, UploadFile
 from .mtab import *
 from models.dataset import *
+from settings import RESOURCE_URL, ONTOLOGY_URL
 
 
 router = APIRouter(prefix="/annotations", tags=["annotations"])
@@ -22,8 +25,22 @@ async def annotate_from_url(url: str, sep:str=","):
     return ann["semantic"]
 
 
+def annotate_dataframe(df: pd.DataFrame, ann:dict):
+    cols = []
+    ann_cols = ann["semantic"]['cpa']
+    for index, col in enumerate(df.columns):
+        try:
+            cols.append(ONTOLOGY_URL + ann_cols[index][2])
+        except Exception as e:
+            cols.append('')
+    df.columns = cols
+    for col in df.columns:
+        df[col] = RESOURCE_URL + df[col].replace(' ', '_', regex=True)
+    return df
+
+
 @router.post("/local")
-def annotate_from_upload(file: UploadFile, sep=","):
+def annotate_from_upload(file: UploadFile, fileres:bool, sep=","):
     ann_request = AnnotationRequest("table 2")
     if not file.filename.endswith('.csv'):
         return {"error": "invalid file extension"}
@@ -34,4 +51,14 @@ def annotate_from_upload(file: UploadFile, sep=","):
     ann = mtab_client.annotate(ann_request.to_dict())
     if "semantic" not in ann.keys():
         raise HTTPException(status_code=400, detail="Dirty dataset")
-    return ann["semantic"]
+    df = annotate_dataframe(df, ann)
+    if fileres == True:
+        stream = io.StringIO()
+        df.to_csv(stream, index=False)
+        response = StreamingResponse(
+            iter([stream.getvalue()]), media_type="text/csv")
+        response.headers["Content-Disposition"] = "attachment; filename=export.csv"
+        return response
+    rows = df.to_numpy()
+    table = [list(row) for row in rows]
+    return table #ann["semantic"]

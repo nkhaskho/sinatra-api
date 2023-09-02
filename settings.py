@@ -4,6 +4,10 @@ API_VERSION = 1
 # Mtab API URL
 MTAB_API_URL = "http://mtab4d.kgraph.jp/api/v1/mtab"
 
+
+RESOURCE_URL = "http://dbpedia.org/resource/" # column value
+ONTOLOGY_URL = "http://dbpedia.org/ontology/" # column name
+
 # Specials characters
 SPECIAL_CHARS = ['@', '(', ')', '!']
 
