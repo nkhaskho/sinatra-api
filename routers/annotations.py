@@ -1,5 +1,5 @@
 import pandas as pd
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse
 import io
 from fastapi import APIRouter, HTTPException, UploadFile
 from .mtab import *
@@ -53,12 +53,9 @@ def annotate_from_upload(file: UploadFile, fileres:bool, sep=","):
         raise HTTPException(status_code=400, detail="Dirty dataset")
     df = annotate_dataframe(df, ann)
     if fileres == True:
-        stream = io.StringIO()
-        df.to_csv(stream, index=False)
-        response = StreamingResponse(
-            iter([stream.getvalue()]), media_type="text/csv")
-        response.headers["Content-Disposition"] = "attachment; filename=export.csv"
-        return response
-    rows = df.to_numpy()
-    table = [list(row) for row in rows]
-    return table #ann["semantic"]
+        df.to_csv('datasets/dataset.csv')
+        return FileResponse('datasets/dataset.csv')
+    else:
+        rows = df.to_numpy()
+        table = [list(row) for row in rows]
+        return table #ann["semantic"]
