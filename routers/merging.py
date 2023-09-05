@@ -21,7 +21,7 @@ def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str,
         # Check case 2 before
         s1 = set(df1[df1.columns[0]])
         s2 = set(df2[df2.columns[0]])
-        if len(s1.intersection(s2))==0 or len(s2.intersection(s1))==0:
+        if len(s1.intersection(s2))==0 and len(s2.intersection(s1))==0:
             raise HTTPException(status_code=404, detail="Subject column missmatch")
         else:
             df_result = pd.merge(df1, df2, "outer", left_on=df1.columns[0], right_on=df2.columns[0])
