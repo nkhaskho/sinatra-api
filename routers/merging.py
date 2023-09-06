@@ -1,4 +1,5 @@
 import pandas as pd
+from fastapi.responses import FileResponse
 from fastapi import APIRouter, UploadFile, HTTPException
 from models.dataset import Dataset
 
@@ -6,7 +7,7 @@ router = APIRouter(prefix="/merging", tags=["merging"])
 
 
 @router.put("/local") # response_model=Dataset, 
-def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str, subject_col: str=""):
+def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str, subject_col: str="", fileres:bool=False):
     """
     TODO: Adding API endpoint documentation
     TODO: Refactor endpoint to merge from remote
@@ -28,5 +29,8 @@ def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str,
             df_result = df_result.drop([df2.columns[0]], axis=1)
     df_result.fillna("", inplace=True)
     # TODO: Replace fillna by sparql fill
+    if fileres == True:
+        df_result.to_csv('datasets/result.csv')
+        return FileResponse('datasets/result.csv')
     ds_result = df_result.to_dict('index')
     return list(ds_result.values())

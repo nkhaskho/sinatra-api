@@ -51,3 +51,20 @@ def preprocess_from_upload(file: UploadFile, separator: str, fileres:bool=True):
     dataset = [list(df.columns.values)]
     dataset.extend([list(row) for row in rows])
     return dataset
+
+@router.post("/json")
+def preprocess_from_json(data: list[list], separator: str, fileres:bool=True):
+    print(data)
+    df = pd.DataFrame(data[1:], columns=data[0])
+    #df = lowercase_dataframe(df)
+    # Pre-process auto-replace (see settings)
+    df.replace(ABBREVS.keys(), ABBREVS.values(), inplace=True)
+    # add SPEC_CHARS_DICT & fix regex check
+    df.replace({r'.*\?.*': ''}, regex=True, inplace=True)
+    if fileres == True:
+        df.to_csv('./datasets/dataset.csv')
+        return FileResponse('./datasets/dataset.csv')
+    rows = df.to_numpy(na_value='')
+    dataset = [list(df.columns.values)]
+    dataset.extend([list(row) for row in rows])
+    return dataset
