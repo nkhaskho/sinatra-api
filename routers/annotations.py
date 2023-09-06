@@ -53,7 +53,7 @@ def annotate_from_upload(file: UploadFile, fileres:bool, sep=","):
         raise HTTPException(status_code=400, detail="Dirty dataset")
     df = annotate_dataframe(df, ann)
     if fileres == True:
-        df.to_csv('datasets/dataset.csv')
+        df.to_csv('datasets/dataset.csv', index=False)
         return FileResponse('datasets/dataset.csv')
     else:
         rows = df.to_numpy()

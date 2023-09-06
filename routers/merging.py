@@ -30,7 +30,7 @@ def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str,
     df_result.fillna("", inplace=True)
     # TODO: Replace fillna by sparql fill
     if fileres == True:
-        df_result.to_csv('datasets/result.csv')
+        df_result.to_csv('datasets/result.csv', index=False)
         return FileResponse('datasets/result.csv')
     ds_result = df_result.to_dict('index')
     return list(ds_result.values())

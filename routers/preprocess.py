@@ -26,7 +26,7 @@ async def preprocess_from_remote(url: str, separator: str, fileres: bool=True):
     df = lowercase_dataframe(df)
     df.replace(ABBREVS.keys(), ABBREVS.values(), inplace=True)
     if fileres == True:
-        df.to_csv('./datasets/dataset.csv')
+        df.to_csv('./datasets/dataset.csv', index=False)
         return FileResponse('./datasets/dataset.csv')
     rows = df.to_numpy(na_value='')
     dataset = [list(df.columns.values)]
@@ -45,7 +45,7 @@ def preprocess_from_upload(file: UploadFile, separator: str, fileres:bool=True):
     # add SPEC_CHARS_DICT & fix regex check
     df.replace({r'.*\?.*': ''}, regex=True, inplace=True)
     if fileres == True:
-        df.to_csv('./datasets/dataset.csv')
+        df.to_csv('./datasets/dataset.csv', index=False)
         return FileResponse('./datasets/dataset.csv')
     rows = df.to_numpy(na_value='')
     dataset = [list(df.columns.values)]
@@ -62,7 +62,7 @@ def preprocess_from_json(data: list[list], separator: str, fileres:bool=True):
     # add SPEC_CHARS_DICT & fix regex check
     df.replace({r'.*\?.*': ''}, regex=True, inplace=True)
     if fileres == True:
-        df.to_csv('./datasets/dataset.csv')
+        df.to_csv('./datasets/dataset.csv', index=False)
         return FileResponse('./datasets/dataset.csv')
     rows = df.to_numpy(na_value='')
     dataset = [list(df.columns.values)]
