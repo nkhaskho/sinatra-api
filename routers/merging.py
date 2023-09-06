@@ -25,6 +25,7 @@ def merge_from_local(dataset1: UploadFile, dataset2: UploadFile, separator: str,
             raise HTTPException(status_code=404, detail="Subject column missmatch")
         else:
             df_result = pd.merge(df1, df2, "outer", left_on=df1.columns[0], right_on=df2.columns[0])
+            df_result = df_result.drop([df2.columns[0]], axis=1)
     df_result.fillna("", inplace=True)
     # TODO: Replace fillna by sparql fill
     ds_result = df_result.to_dict('index')
